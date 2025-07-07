@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:130.0) Gecko/20100101 Firefox/130.0" version="27.0.5" pages="2">
+  <diagram id="X1NcyWDVpJhd5uVYDt6v" name="Page-1">
+    <mxGraphModel dx="983" dy="520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="9" value="Pyaudio stream : stream.read" style="edgeStyle=none;html=1;" parent="1" source="2" target="8" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2" value="updateFreqs" style="rounded=0;whiteSpace=wrap;html=1;glass=0;shadow=0;" parent="1" vertex="1">
+          <mxGeometry x="365" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="" style="edgeStyle=none;html=1;" parent="1" source="8" target="10" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="Transformée de Fourier : numpy.fft.rfft" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="11" vertex="1" connectable="0">
+          <mxGeometry x="-0.3483" relative="1" as="geometry">
+            <mxPoint y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8" value="Données micro (domaine temporel):&lt;br&gt;numpy array" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="365" y="150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="36" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=default;rounded=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="10" target="32" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="424.6896551724137" y="379.9999999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="38" value="Soustraction :&lt;br&gt;safeGraphSubstract" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="36" vertex="1" connectable="0">
+          <mxGeometry x="-0.3007" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="10" value="Données micro (domaine fréquentiel):&lt;br&gt;numpy array" style="whiteSpace=wrap;html=1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="365" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="Bruit de fond (domaine fréquentiel):&lt;br&gt;numpy array" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;glass=0;sketch=0;" parent="1" vertex="1">
+          <mxGeometry x="160" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="44" value="" style="edgeStyle=none;rounded=1;sketch=0;html=1;strokeColor=default;endArrow=classic;endFill=1;" parent="1" source="32" target="43" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="47" value="Amplitude &amp;lt; threshold ?" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="44" vertex="1" connectable="0">
+          <mxGeometry x="-0.3253" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" value="Amplitude des fréquences privées du bruit de fond :&lt;br&gt;numpy array" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;glass=0;sketch=0;" parent="1" vertex="1">
+          <mxGeometry x="365" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=1;sketch=0;strokeColor=default;" parent="1" source="27" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="320" as="sourcePoint" />
+            <mxPoint x="360" y="360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="220" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="49" value="" style="edgeStyle=none;rounded=1;sketch=0;html=1;strokeColor=default;endArrow=classic;endFill=1;" parent="1" source="43" target="48" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="50" value="Estimation de l&#39;amplitude de chaque note entendue :&lt;br&gt;getNotePresenceArr" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="49" vertex="1" connectable="0">
+          <mxGeometry x="-0.2563" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="43" value="Amplitude des fréquences non négligeables :&lt;br&gt;numpy array" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;glass=0;sketch=0;" parent="1" vertex="1">
+          <mxGeometry x="365" y="510" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="" style="edgeStyle=none;rounded=1;sketch=0;html=1;strokeColor=default;endArrow=classic;endFill=1;" parent="1" source="48" target="51" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="55" value="Suppression des harmoniques : purify" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="52" vertex="1" connectable="0">
+          <mxGeometry x="-0.3713" y="3" relative="1" as="geometry">
+            <mxPoint x="2" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="48" value="Présences des notes en amplitude :&lt;br&gt;numpy array (len 88)" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;glass=0;sketch=0;" parent="1" vertex="1">
+          <mxGeometry x="365" y="630" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="51" value="Liste des notes jouées sur l&#39;instrument dans l&#39;échantillon du micro" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;glass=0;sketch=0;" parent="1" vertex="1">
+          <mxGeometry x="365" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ljzy3sRpOBtfo5gtIVOn-57" value="&lt;div&gt;Fichier MIDI en cours d&#39;écriture&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;glass=0;sketch=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="870" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ljzy3sRpOBtfo5gtIVOn-58" value="" style="edgeStyle=none;rounded=1;sketch=0;html=1;strokeColor=default;endArrow=classic;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="424" y="810" as="sourcePoint" />
+            <mxPoint x="424" y="870" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ljzy3sRpOBtfo5gtIVOn-59" value="Enregistrement dans fichier : handleNotes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Ljzy3sRpOBtfo5gtIVOn-58">
+          <mxGeometry x="-0.3713" y="3" relative="1" as="geometry">
+            <mxPoint x="2" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ljzy3sRpOBtfo5gtIVOn-64" value="&lt;div&gt;Fichier MIDI en cours d&#39;écriture&lt;/div&gt;" style="whiteSpace=wrap;html=1;rounded=1;shadow=0;glass=0;sketch=0;" vertex="1" parent="1">
+          <mxGeometry x="365" y="990" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Ljzy3sRpOBtfo5gtIVOn-65" value="" style="edgeStyle=none;rounded=1;sketch=0;html=1;strokeColor=default;endArrow=classic;endFill=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="424" y="930" as="sourcePoint" />
+            <mxPoint x="424" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Ljzy3sRpOBtfo5gtIVOn-66" value="Fin" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Ljzy3sRpOBtfo5gtIVOn-65">
+          <mxGeometry x="-0.3713" y="3" relative="1" as="geometry">
+            <mxPoint x="-2" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="TprJam43KWHZNUIUr3dO" name="Page-2">
+    <mxGraphModel dx="1386" dy="764" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vDUGGV2D6X-pKeQus3O--1" value="Début" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;glass=0;sketch=0;" vertex="1" parent="1">
+          <mxGeometry x="360" y="30" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
